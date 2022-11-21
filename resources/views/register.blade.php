@@ -42,7 +42,8 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="regform">
+                            <form action="/register" method="POST" class="regform">
+                                @csrf
                                 <div class="form-group">
                                     <select id="account" class="form-control-role">
                                         <option value="None" selected disabled>Select Type of Account</option>
@@ -52,30 +53,30 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-regform" id="exampleFirstName"
+                                        <input type="text" name="first_name" class="form-control form-control-regform" id="exampleFirstName"
                                             placeholder="First Name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-regform" id="exampleLastName"
+                                        <input type="text" name="last_name" class="form-control form-control-regform" id="exampleLastName"
                                             placeholder="Last Name">
                                     </div>
                                     
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-regform" id="exampleInputEmail"
+                                    <input type="email" name="email" class="form-control form-control-regform" id="exampleInputEmail"
                                         placeholder="Email Address">
                                 </div>
                                 <div class="form-group">
-                                    <input type="date" class="form-control form-control-regform" id="exampleDateofBirth"
+                                    <input type="date" name="birthdate" class="form-control form-control-regform" id="exampleDateofBirth"
                                         placeholder="Date of Birth - ">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-regform"
+                                        <input type="password" name="password" class="form-control form-control-regform"
                                             id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-regform"
+                                        <input type="password" name="confirm_password" class="form-control form-control-regform"
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
@@ -83,7 +84,7 @@
                                 <div class="Doctor user">
                                  <div class="form-group">
                                     <label style="font-size: 0.8rem;">Upload PRC ID: </label>
-                                    <input type="file" class="form-control-regform" name="fileupload" accept="image/*" />
+                                    <input type="file" name="prc_identification" class="form-control-regform" name="fileupload" accept="image/*" />
                                 </div>
                                 
                                 <div class="form-group">
@@ -99,48 +100,51 @@
                                 <hr>
                                 <div class="form-group row">
                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                    <form style="font-size: 0.8rem;">      
+                                    <form action="/register" method="POST" style="font-size: 0.8rem;">
+                                    @csrf    
                                         <label for="symptoms">Please select day availability</label><br>
-                                        <input type="checkbox" name="Sunday" /> Sunday<br>
-                                        <input type="checkbox" name="Monday" /> Monday<br> 
-                                        <input type="checkbox" name="Tuesday" /> Tuesday<br>
-                                        <input type="checkbox" name="Wednesday" /> Wednesday<br>
-                                        <input type="checkbox" name="Thursday" /> Thursday <br>
-                                        <input type="checkbox" name="Friday" /> Friday<br>
-                                        <input type="checkbox" name="Saturday" /> Saturday<br>
+                                        <input type="checkbox" name="days" /> Sunday<br>
+                                        <input type="checkbox" name="days" /> Monday<br> 
+                                        <input type="checkbox" name="days" /> Tuesday<br>
+                                        <input type="checkbox" name="days" /> Wednesday<br>
+                                        <input type="checkbox" name="days" /> Thursday <br>
+                                        <input type="checkbox" name="days" /> Friday<br>
+                                        <input type="checkbox" name="days" /> Saturday<br>
                                     </form>
                                 </div>
                                 <div class="col-sm-4">
-                                    <form style="font-size: 0.8rem;">      
+                                    <form action="/register" method="POST" style="font-size: 0.8rem;">
+                                    @csrf    
                                         <label for="symptoms">Please select AM availability</label><br>
                                         <input type="checkbox" name="12:00AM - 1:00AM" /> 12:00AM - 1:00AM<br>
-                                        <input type="checkbox" name="1:00AM - 2:00AM" /> 1:00AM - 2:00AM<br>
-                                        <input type="checkbox" name="2:00AM - 3:00AM" /> 2:00AM - 3:00AM<br>
-                                        <input type="checkbox" name="3:00AM - 4:00AM" /> 3:00AM - 4:00AM<br>
-                                        <input type="checkbox" name="4:00AM - 5:00AM" /> 4:00AM - 5:00AM<br>
-                                        <input type="checkbox" name="5:00AM - 6:00AM" /> 5:00AM - 6:00AM<br>
-                                        <input type="checkbox" name="6:00AM - 7:00AM" /> 6:00AM - 7:00AM<br>
-                                        <input type="checkbox" name="7:00AM - 8:00AM" /> 7:00AM - 8:00AM<br>
-                                        <input type="checkbox" name="8:00AM - 9:00AM" /> 8:00AM - 9:00AM<br>
-                                        <input type="checkbox" name="9:00AM - 10:00AM" /> 9:00AM - 10:00AM<br> 
-                                        <input type="checkbox" name="10:00AM - 11:00AM" /> 10:00AM - 11:00AM<br>
-                                        <input type="checkbox" name="11:00AM - 12:00PM" /> 11:00AM - 12:00PM<br>
+                                        <input type="checkbox" name="time" /> 1:00AM - 2:00AM<br>
+                                        <input type="checkbox" name="time" /> 2:00AM - 3:00AM<br>
+                                        <input type="checkbox" name="time" /> 3:00AM - 4:00AM<br>
+                                        <input type="checkbox" name="time" /> 4:00AM - 5:00AM<br>
+                                        <input type="checkbox" name="time" /> 5:00AM - 6:00AM<br>
+                                        <input type="checkbox" name="time" /> 6:00AM - 7:00AM<br>
+                                        <input type="checkbox" name="time" /> 7:00AM - 8:00AM<br>
+                                        <input type="checkbox" name="time" /> 8:00AM - 9:00AM<br>
+                                        <input type="checkbox" name="time" /> 9:00AM - 10:00AM<br> 
+                                        <input type="checkbox" name="time" /> 10:00AM - 11:00AM<br>
+                                        <input type="checkbox" name="time" /> 11:00AM - 12:00PM<br>
                                     </form>
                                 </div> 
                                 <div class="col-sm-4">
-                                    <form style="font-size: 0.8rem;">
+                                    <form action="/register" method="POST" style="font-size: 0.8rem;">
+                                        @csrf
                                         <label for="symptoms">Please select PM availability</label><br>
-                                        <input type="checkbox" name="12:00PM - 1:00PM" /> 12:00PM - 1:00PM <br>
-                                        <input type="checkbox" name="1:00PM - 2:00PM" /> 1:00PM - 2:00PM<br>
-                                        <input type="checkbox" name="2:00PM - 3:00PM" /> 2:00PM - 3:00PM<br>
-                                        <input type="checkbox" name="4:00PM - 5:00PM" /> 4:00PM - 5:00PM<br>
-                                        <input type="checkbox" name="5:00PM - 6:00PM" /> 5:00PM - 6:00PM<br>
-                                        <input type="checkbox" name="6:00PM - 7:00PM" /> 6:00PM - 7:00PM<br>
-                                        <input type="checkbox" name="7:00PM - 8:00PM" /> 7:00PM - 8:00PM<br>
-                                        <input type="checkbox" name="8:00PM - 9:00PM" /> 8:00PM - 9:00PM<br>
-                                        <input type="checkbox" name="9:00PM - 10:00PM" /> 9:00PM - 10:00PM<br>
-                                        <input type="checkbox" name="10:00PM - 11:00PM" /> 10:00PM - 11:00PM<br>
-                                        <input type="checkbox" name="11:00PM - 12:00AM" /> 11:00PM - 12:00AM
+                                        <input type="checkbox" name="time" /> 12:00PM - 1:00PM <br>
+                                        <input type="checkbox" name="time" /> 1:00PM - 2:00PM<br>
+                                        <input type="checkbox" name="time" /> 2:00PM - 3:00PM<br>
+                                        <input type="checkbox" name="time" /> 4:00PM - 5:00PM<br>
+                                        <input type="checkbox" name="time" /> 5:00PM - 6:00PM<br>
+                                        <input type="checkbox" name="time" /> 6:00PM - 7:00PM<br>
+                                        <input type="checkbox" name="time" /> 7:00PM - 8:00PM<br>
+                                        <input type="checkbox" name="time" /> 8:00PM - 9:00PM<br>
+                                        <input type="checkbox" name="time" /> 9:00PM - 10:00PM<br>
+                                        <input type="checkbox" name="time" /> 10:00PM - 11:00PM<br>
+                                        <input type="checkbox" name="time" /> 11:00PM - 12:00AM
                                     </form>         
                                 </div> 
                                 </div>
@@ -150,7 +154,7 @@
                        
                                 <hr>
                                 <form class="regform"> 
-                                <a href="login.html" class="btn btn-primary btn-regform btn-block">
+                                <a href="login" class="btn btn-primary btn-regform btn-block">
                                 Register Account
                                 </a>
                                 </form>
@@ -159,10 +163,10 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="forgot-password">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

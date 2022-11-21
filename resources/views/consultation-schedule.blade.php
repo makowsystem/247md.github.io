@@ -47,23 +47,15 @@
                             </thead>
                             
                             <tbody>
+                                @foreach ($patients as $patient)
                                 <tr>
-                                    <td>Kevin Pastores</td>
-                                    <td>June 2, 1998</td>
-                                    <td>24</td>
-                                    <td>Sept 28, 2022</td>
-                                    <td>9:00AM</td>
+                                    <td> {{ $patient -> first_name }} {{ $patient -> last_name }} </td>
+                                    <td> {{ $patient -> birthdate }} </td>
+                                    <td> {{ $patient -> age }} </td>
+                                    <td> {{ $patient -> appointment_date }} </td>
+                                    <td> {{ $patient -> start_time }} </td>
                                 </tr>
-
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>August 2, 1998</td>
-                                    <td>24</td>
-                                    <td>Sept 28, 2022</td>
-                                    <td>9:30AM</td>
-                                </tr>
-
-                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

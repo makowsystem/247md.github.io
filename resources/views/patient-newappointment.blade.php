@@ -36,8 +36,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3 mb-3 mb-sm-0">
                                 Date of Appointment:
-                                <input type="date" class="form-control form-control-user" id="exampledateofappointment"
-                                    placeholder="dateofappointment">
+                                <input type="date" name="appointment_date" class="form-control form-control-user" id="exampledateofappointment">
                             </div>
     
                             <div class="col-sm-3 mb-3 mb-sm-0">
@@ -73,8 +72,7 @@
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
                                 Date of Birth:
-                                <input type="date" class="form-control form-control-user" id="exampledateofbirth"
-                                    placeholder="dateofappointment">
+                                <input type="date" class="form-control form-control-user" id="exampledateofbirth">
                             </div>
                             <div class="col-sm-4">
                                 Allergies:
@@ -118,15 +116,17 @@
                     </thead>
                     
                     <tbody>
-                        <tr>
-                            <td>Jericho Agudo</td>
-                            <td>June 2, 1998</td>
-                            <td>24</td>
-                            <td>July 06, 2022</td>
-                            <td>LBM</td>
-                            <td>NKA</td>
-                            <td><a href="#" style="color:gray;">Click to View</a></td>
-                        </tr>
+                        @foreach ($consultations as $consultant)
+                            <tr>
+                                <td> {{ $consultant -> first_name }} {{ $consultant -> last_name }} </td>
+                                <td> {{ $consultant -> birthdate }} </td>
+                                <td> {{ $consultant -> age }} </td>
+                                <td> {{ $consultant -> appointment_date }} </td>
+                                <td> {{ $consultant -> complaint }} </td>
+                                <td> {{ $consultant -> allergies }} </td>
+                                <td><a href="#" style="color:gray;">Click to View</a></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

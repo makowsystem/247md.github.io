@@ -46,38 +46,15 @@
                     </thead>
                     
                     <tbody>
+                        @foreach ($patients as $patient)
                         <tr>
-                            <td>Kevin Pastores</td>
-                            <td>June 2, 1998</td>
-                            <td>24</td>
-                            <td>Sept 25, 2022</td>
-                            <td>Request for Medical Certificate</td>
+                            <td> {{ $patient -> first_name }} {{ $patient -> last_name }} </td>
+                            <td> {{ $patient -> birthdate }} </td>
+                            <td> {{ $patient -> age }} </td>
+                            <td> {{ $patient -> appointment_date }} </td>
+                            <td> {{ $patient -> services }} </td>
                         </tr>
-
-                        <tr>
-                            <td>John Doe</td>
-                            <td>August 2, 1998</td>
-                            <td>24</td>
-                            <td>Sept 25, 2022</td>
-                            <td>Online Consultation</td>
-                        </tr>
-
-                        <tr>
-                            <td>Mary Jane</td>
-                            <td>August 24, 1998</td>
-                            <td>24</td>
-                            <td>Sept 25, 2022</td>
-                            <td>Online Consultation</td>
-                        </tr>
-
-                        <tr>
-                            <td>Chris Monroe</td>
-                            <td>August 24, 1992</td>
-                            <td>30</td>
-                            <td>Sept 25, 2022</td>
-                            <td>Follow-Up Check Up</td>
-                        </tr>
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>
