@@ -33,8 +33,15 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Next Consultation :</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Kevin Pastores - 9:00AM</div>
+                                Next Consultation :
+                            </div>
+                            @foreach ($consultants as $consultant)
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @if ($loop -> first)
+                                    {{ $consultant -> first_name }} {{ $consultant -> last_name }} - {{ $consultant -> start_time }}
+                                @endif
+                            </div>
+                            @endforeach
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -43,8 +50,6 @@
                 </div>
             </div>
         </div>
-
-
         <!-- Task Card -->
         <div class="col-xl-4 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
@@ -82,7 +87,11 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            @foreach ($pending_reqs as $pending_req)
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                {{ $pending_req -> pending_requests }}
+                            </div>
+                            @endforeach
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -115,24 +124,15 @@
                     </thead>
                     
                     <tbody>
+                        @foreach ($patients as $patient)
                         <tr>
-                            <td>Kevin Pastores</td>
-                            <td>June 2, 1998</td>
-                            <td>24</td>
-                            <td>Fever, Runny Nose and Cough</td>
-                            <td>NKA</td>
-                        </tr>
-
-                        <tr>
-                            <td>John Doe</td>
-                            <td>August 2, 1998</td>
-                            <td>24</td>
-                            <td>Sore Throat</td>
-                            <td>NKA</td>
-                        </tr>
-
-
-                        
+                            <td> {{ $patient -> first_name }} {{ $patient -> last_name }} </td>
+                            <td> {{ $patient -> birthdate }} </td>
+                            <td> {{ $patient -> age }} </td>
+                            <td> {{ $patient -> complaint }} </td>
+                            <td> {{ $patient -> allergies }} </td>
+                        </tr>           
+                        @endforeach             
                     </tbody>
                 </table>
             </div>

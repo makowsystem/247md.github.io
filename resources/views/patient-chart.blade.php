@@ -47,16 +47,15 @@
                     </thead>
                     
                     <tbody>
+                        @foreach ($patients as $patient)
                         <tr>
-                            <td>Kevin Pastores</td>
-                            <td>June 2, 1998</td>
-                            <td>24</td>
-                            <td>Fever, Runny Nose and Cough</td>
-                            <td>NKA</td>
+                            <td> {{ $patient -> first_name }} {{ $patient -> last_name }} </td>
+                            <td> {{ $patient -> birthdate }} </td>
+                            <td> {{ $patient -> age }} </td>
+                            <td> {{ $patient -> complaint }} </td>
+                            <td> {{ $patient -> allergies }} </td>
                         </tr>
-
-
-                        
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DoctorDashboard;
+use App\Http\Controllers\PatientDashboard;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +14,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Doctor dashboard
+Route::get('/dashboard', [DoctorDashboard::class, 'doctorDashboard']);
+Route::get('/tables', [DoctorDashboard::class, 'patientsList']);
+Route::get('patient-chart', [DoctorDashboard::class, 'patientChart']);
+Route::get('/consultation-schedule', [DoctorDashboard::class, 'consultationSched']);
+
+
+// Patient dashboard
+Route::get('/patient-dashboard', [PatientDashboard::class, 'appointmentToday']);
+Route::get('/patient-newappointment', [PatientDashboard::class, 'newAppointment']);
+
+// doctor register and login
+Route::post('/register', [UsersController::class, 'registerAsDoctor']);
+Route::post('/login', [UsersController::class, 'login']);
+// patient register and login
+Route::post('/register', [UsersController::class, 'registerAsPatient']);
+Route::post('/login', [UsersController::class, 'login']);
+
+Route::get('/register', [UsersController::class, 'showRegister']);
+
 
 Route::get('/', function () {
     return view('index');
@@ -29,48 +52,16 @@ Route::get('/blog', function () {
     return view('blog');
 });
 
-Route::get('/consultation-schedule', function () {
-    return view('consultation-schedule');
-});
-
 Route::get('/contact', function () {
     return view('contact');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
 });
 
 Route::get('/forgot-password', function () {
     return view('forgot-password');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
-Route::get('/patient-chart', function () {
-    return view('patient-chart');
-});
-
-Route::get('/patient-dashboard', function () {
-    return view('patient-dashboard');
-});
-
-Route::get('/patient-newappointment', function () {
-    return view('patient-newappointment');
-});
-
-Route::get('/register', function () {
-    return view('register');
-});
-
 Route::get('/services', function () {
     return view('services');
-});
-
-Route::get('/tables', function () {
-    return view('tables');
 });
 
 Route::get('/team', function () {
