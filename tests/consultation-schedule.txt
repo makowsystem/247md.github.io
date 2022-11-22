@@ -9,43 +9,24 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>24/7 MD - New Appointment</title>
+    <title>24/7 MD - Consultation Schedule</title>
 
     
   <!-- Favicons -->
   <link href="assets/img/stethlogo.png" rel="icon">
   <link href="assets/img/stethlogo.png" rel="apple-touch-icon">
 
-    <!-- Custom fonts for this template-->
+    <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <style>
-        #doctor {
-        display:none;
-        }
-
-        #doctor1 {
-        display:none;
-        }
-
-        #doctor2 {
-        display:none;
-        }
-
-        #doctor3 {
-        display:none;
-        }
-
-        #doctor4 {
-        display:none;
-        }
-    </style>
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -58,7 +39,7 @@
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:#1b2f45">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="patient-dashboard.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div>
                     <img src="assets/img/stethlogo.png" style="width:30px">
                 </div>
@@ -68,13 +49,11 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            
-
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="patient-dashboard.html">
+                <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Patient Dashboard</span></a>
+                    <span>Doctor's Dashboard</span></a>
             </li>
 
             <!-- Divider -->
@@ -82,18 +61,27 @@
 
             <!-- Heading -->
         <!-- Nav Item - Pages Collapse Menu -->
-
-        <li class="nav-item">
-            <a class="nav-link" href="patient-newappointment.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>New Appointment</span></a>
-        </li>
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" href="tables">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Consultation History</span>
+                    <span>Patient Database</span>
                 </a>
-         
+
+        
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="patient-chart">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Patient Charts</span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="consultation-schedule">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Consultation Schedule</span></a>
+            </li>
 
              <!-- Nav Item - Setings Collapse Menu -->
              <li class="nav-item">
@@ -325,156 +313,20 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Consultation Schedule</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="background-color:#1b2f45"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
 
-                    
-                        <!-- DataTable-->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Schedule New Appointment</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <form action="/patient-newappointment" method="POST">
-                                            @csrf
-                                            <div class="form-group row">
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <input type="text" name="first_name" class="form-control form-control-user" id="exampleFirstName"
-                                                        placeholder="First Name">
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <input type="text" name="last_name" class="form-control form-control-user" id="exampleLastName"
-                                                        placeholder="Last Name">
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Date of Appointment:
-                                                    <input type="date" name="appointment_date" class="form-control form-control-user" id="exampledateofappointment"
-                                                        placeholder="Date of Appointment">
-                                                </div>
-                        
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Time of Appointment:
-                                                    <input type="time" name="appointment_time" class="form-control form-control-user" id="exampletimeofappointment"
-                                                        placeholder="Time of Appointment">
-                                                </div>
-                                                
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Select Gender: <br />
-                                                    <select name="gender" class="form-control form-control-user">
-                                                        <option value="None" selected disabled></option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                        <option value="Others">Others</option>
-                                                        
-                                                    </select>
-                                                </div>
 
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Date of Birth:
-                                                    <input type="date" name="birthdate" class="form-control form-control-user" id="exampledateofbirth"
-                                                        placeholder="Select Date of Birth">
-                                                </div>
-                                            </div>
-                                           
-                                            <div class="form-group row">
-                                                 <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Allergy:
-                                                    <input type="text" name="allergies" class="form-control form-control-user" id="exampleAllergy"
-                                                        placeholder="Allergy">
-                                                </div>
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Select Service: <br />
-                                                    <select id="service" name="services" class="form-control form-control-user">
-                                                        <option value="None" selected disabled></option>
-                                                        <option value="Online Consultation">Online Consultation</option>
-                                                        <option value="Follow-Up Check-Up">Follow-Up Check-Up</option>
-                                                        <option value="Request Fit to Wor">Request Fit to Work</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                                    Select Department: <br />
-                                                    <select id="department" name="department" class="form-control form-control-user">
-                                                        <option value="None" selected disabled></option>
-                                                        <option value="Family Doctor">Family Doctor</option>
-                                                        <option value="Internal Medicine">Internal Medicine</option>
-                                                        <option value="Occupational Health Medicine">Occupational Health Medicine</option>
-                                                        <option value="ENT">ENT</option>
-                                                        <option value="Obstetrics and Gynecology">Obstetrics and Gynecology</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <div id="doctor">
-                                                    Select Primary Care Physcian: <br />
-                                                    <select name="doctor" class="form-control form-control-user">
-                                                        <option value="None" selected disabled>Family Doctor Physicians</option>
-                                                        <option value="Kevin Pastores">Dr. Kevin Pastores</option>
-                                                        </select>
-                                                    </form>
-                                                    </div>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                                                    <div id="doctor1">
-                                                        Select Primary Care Physcian: <br />
-                                                        <select name="doctor" class="form-control form-control-user">
-                                                            <option value="None" selected disabled>Internal Medicine Physicians</option>
-                                                            <option value="Mark Anthony">Dr. Mark Anthony</option>
-                                                        </select>
-                                                        </form>
-                                                    </div>
 
-                                                        <div id="doctor2">
-                                                            Select Primary Care Physcian: <br />
-                                                            <select name="doctor" class="form-control form-control-user">
-                                                                <option value="None" selected disabled>Occupational Health Physicians</option>
-                                                                <option value="Neo">Dr. Neo</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div id="doctor3">
-                                                             Select Primary Care Physcian: <br />
-                                                             <select name="doctor" class="form-control form-control-user">
-                                                             <option value="None" selected disabled>ENT Physicians</option>
-                                                             <option value="Jason">Dr. Jason</option>
-                                                             </select>
-                                                        </div>
-
-                                                        <div id="doctor4">
-                                                            Select Primary Care Physcian: <br />
-                                                            <select name="doctor" class="form-control form-control-user">
-                                                            <option value="None" selected disabled>OB Physicians</option>
-                                                            <option value="Daiben">Dr. Daiben</option>
-                                                            </select>
-                                                       </div>
-                                                </div>    
-                                            </div>
-                                            <div class="form-group">
-                                                
-                                                <div class="col-sm-12">
-                                                    Chief Complaint:
-                                                    <textarea rows="10" name="complaint" class="form-control form-control-user" id="exampledescription"
-                                                        placeholder="Description">
-                                                    </textarea>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="background-color:#1b2f45"><i
-                                                class="fas fa-sm text-white-50"></i>Submit Appointment</a>
-                                        </form>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                    
-                        <!-- DataTables Example -->
+                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Most Recent Consultation</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Patient List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -484,37 +336,43 @@
                                             <th>Name</th>
                                             <th>Date of Birth</th>
                                             <th>Age</th>
-                                            <th>Date of Consultation</th>
-                                            <th>Chief Complaint</th>
-                                            <th>Allergies</th>
+                                            <th>Consultation Date</th>
+                                            <th>Time</th>
+                                            <th>Complain</th>
+                                            <th>Service</th>
                                             <th>Doctor's Note</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                        @foreach ($consultations as $consultant)
+                                        @foreach ($patients as $patient)
                                         <tr>
-                                            <td> {{ $consultant -> first_name }} {{ $consultant -> last_name }} </td>
-                                            <td> {{ $consultant -> birthdate }} </td>
-                                            <td> {{ $consultant -> age }} </td>
-                                            <td> {{ $consultant -> appointment_date }} </td>
-                                            <td> {{ $consultant -> complaint }} </td>
-                                            <td> {{ $consultant -> allergies }} </td>
-                                            <td><a href="#" style="color:gray;">Click to View</a></td>
+                                            <td> {{ $patient -> first_name }} {{ $patient -> last_name }} </td>
+                                            <td> {{ $patient -> birthdate }} </td>
+                                            <td> {{ $patient -> age }} </td>
+                                            <td> {{ $patient -> appointment_date }} </td>
+                                            <td> {{ $patient -> start_time }} </td>
+                                            <td> {{ $patient -> complaint }} </td>
+                                            <td> {{ $patient -> services }} </td>
+                                            <td>
+                                                <div>
+                                                <input type="file" name="fileupload" accept="image/*" /><br>
+                                                </div>
+                                                 <div>
+                                                &nbsp;&nbsp;
+                                                <input type="submit" style="width:100px" class="btn btn-primary btn-user btn-block" name="submit" value="Upload" />
+                                                 </div>
+                                            </td>
+                                            @endforeach
                                         </tr>
-                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
 
-
-                       
-
-
                 </div>
-             
+                <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
@@ -554,7 +412,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="login">Logout</a>
                 </div>
             </div>
         </div>
@@ -571,48 +429,11 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="nova/vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="nova/js/demo/chart-area-demo.js"></script>
-    <script src="nova/js/demo/chart-pie-demo.js"></script>
-
-    <!--Script for Dropdown List-->
-    <script type="text/javascript">
-    $('#department').on('change', function () {            
-    if(this.value === "Family Doctor"){
-        $("#doctor").show();
-    } else {
-        $("#doctor").hide();
-    }
-    
-    if(this.value === "Internal Medicine"){
-        $("#doctor1").show();
-    } else {
-        $("#doctor1").hide();
-    }
-
-    if(this.value === "Occupational Health Medicine"){
-        $("#doctor2").show();
-    } else {
-        $("#doctor2").hide();
-    }
-
-    if(this.value === "ENT"){
-        $("#doctor3").show();
-    } else {
-        $("#doctor3").hide();
-    }
-
-    if(this.value === "Obstetrics and Gynecology"){
-        $("#doctor4").show();
-    } else {
-        $("#doctor4").hide();
-    }
-
- });
-
-</script>
+    <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 

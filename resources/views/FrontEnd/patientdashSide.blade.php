@@ -5,7 +5,7 @@
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color:#1b2f45">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/patient-dashboard">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div>
             <img src="assets/img/stethlogo.png" style="width:30px">
         </div>

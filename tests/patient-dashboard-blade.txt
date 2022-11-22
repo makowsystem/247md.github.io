@@ -97,9 +97,6 @@
 </div>
 </div>
 <!-- End of Main Content -->
-
-@incldue('FrontEnd/dashFooter')
-
-
+@include('FrontEnd/dashFooter')
 </body>
 </html>

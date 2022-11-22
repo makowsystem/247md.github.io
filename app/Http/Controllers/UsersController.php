@@ -104,7 +104,7 @@ class UsersController extends Controller
     public function userLogin(Request $request){
         $user = PatientAccount::where("email", "=", $request->email)->first();
         if ($user){
-            if (Hash::check($request -> pw, $user -> password)){
+            if ($request -> pw == $user -> password){
                 $request->session()->put('id', $user -> patient_id);
                 $request->session()->put('email', $user -> email);
                 $request->session()->put('first_name', $user -> first_name);
@@ -117,7 +117,7 @@ class UsersController extends Controller
         }else{
             $user = DoctorAccount::where("email", "=", $request->email)->first();
             if ($user){
-                if (Hash::check($request -> pw, $user -> pass)){
+                if ($request -> pw == $user -> pass){
                     $request->session()->put('id', $user -> doctor_id);
                     $request->session()->put('email', $user -> email);
                     $request->session()->put('first_name', $user -> first_name);

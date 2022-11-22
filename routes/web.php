@@ -42,7 +42,7 @@ Route::get('/register', [UsersController::class, 'showRegister']);
 // admin login and out
 Route::get('/admin', [AdminController::class, 'showLogin']);
 Route::post('/admin', [AdminController::class, 'adminLogin']);
-Route::get('/admin/logout', [AdminController::class, 'adminLogout']);
+Route::get('/admin', [AdminController::class, 'adminLogout']);
 
 Route::get('/', function () {
     return view('index');
