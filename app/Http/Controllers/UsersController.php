@@ -12,6 +12,7 @@ use DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -95,4 +96,48 @@ class UsersController extends Controller
     public function showRegister() {
         return view('register');
     }
+
+    public function showLogin() {
+        return view('login');
+    }
+
+    public function userLogin(Request $request){
+        $user = User::where("email", "=", $request->email)->first();
+        if ($user){
+            if (Hash::check($request -> pw, $user -> password)){
+                $request->session()->put('id', $user -> user_id);
+                $request->session()->put('email', $user -> email);
+                $request->session()->put('role', $user -> role);
+                $request->session()->put('first_name', $user -> first_name);
+                $request->session()->put('last_name', $user -> last_name);
+
+                return redirect('/profile');
+            }else{
+                return redirect("/")->with('fail', 'Incorrect password');
+            }
+        }else{
+            return redirect("/")->with('fail', 'No account is registered to the email');
+        }
+    }
+
+    public function showProfile(){
+        if (Session::get("id")){
+            return view('profile');
+        }else{
+            return "Not logged in!";
+        }
+    }
+
+
+    public function logout(){
+        if (Session::has('id')){
+            Session::pull('id');
+            Session::pull('email');
+            Session::pull('role');
+            Session::pull('first_name');
+            Session::pull('last_name');
+            return redirect('/');
+        }
+    }
+
 }

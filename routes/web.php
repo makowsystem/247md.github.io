@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorDashboard;
 use App\Http\Controllers\PatientDashboard;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,12 +31,18 @@ Route::get('/patient-newappointment', [PatientDashboard::class, 'newAppointment'
 // doctor register and login
 Route::post('/register', [UsersController::class, 'registerAsDoctor']);
 Route::post('/login', [UsersController::class, 'login']);
+Route::post('/', [UsersController::class, 'userLogin']);
+
 // patient register and login
 Route::post('/register', [UsersController::class, 'registerAsPatient']);
-Route::post('/login', [UsersController::class, 'login']);
+Route::get('/login', [UsersController::class, 'showLogin']);
 
 Route::get('/register', [UsersController::class, 'showRegister']);
 
+// admin login and out
+Route::get('/admin', [AdminController::class, 'showLogin']);
+Route::post('/admin', [AdminController::class, 'adminLogin']);
+Route::get('/admin/logout', [AdminController::class, 'adminLogout']);
 
 Route::get('/', function () {
     return view('index');
