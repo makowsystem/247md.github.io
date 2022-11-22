@@ -14,7 +14,7 @@ use Session;
 class AdminController extends Controller
 {
     public function showLogin() {
-        return view('admin_login');
+        return view('admin/login');
     }
 
     public function adminLogin(Request $request) {
@@ -22,7 +22,7 @@ class AdminController extends Controller
         if ($user){
             if (Hash::check($request->pw, $user -> password)){
                 if ($user -> role == "admin"){
-                    $request->session()->put('id', $user -> user_id);
+                    $request->session()->put('id', $user -> admin_id);
                     $request->session()->put('email', $user -> email);
                     $request->session()->put('role', $user -> role);
                     $request->session()->put('first_name', $user -> first_name);
@@ -33,10 +33,10 @@ class AdminController extends Controller
                     return redirect("/")->with('fail', 'Not an admin account!');
                 }
             }else{
-                return redirect("/admin")->with('fail', 'Incorrect password!');
+                return redirect("/admin/login")->with('fail', 'Incorrect password!');
             }
         }else{
-            return redirect("/admin")->with('fail', 'No account is registered to the email!');
+            return redirect("/admin/login")->with('fail', 'No account is registered to the email!');
         }
 
     }

@@ -26,7 +26,6 @@
             <a href="/register" class="btn-get-started">Register</a> &nbsp;&nbsp;
             <a href="/login" class="btn-get-started">Login</a>
           </div>
-
         </div>
       </div>
     </div>

@@ -102,21 +102,34 @@ class UsersController extends Controller
     }
 
     public function userLogin(Request $request){
-        $user = User::where("email", "=", $request->email)->first();
+        $user = PatientAccount::where("email", "=", $request->email)->first();
         if ($user){
             if (Hash::check($request -> pw, $user -> password)){
-                $request->session()->put('id', $user -> user_id);
+                $request->session()->put('id', $user -> patient_id);
                 $request->session()->put('email', $user -> email);
-                $request->session()->put('role', $user -> role);
                 $request->session()->put('first_name', $user -> first_name);
                 $request->session()->put('last_name', $user -> last_name);
 
-                return redirect('/profile');
+                return redirect('/patient-dashboard');
             }else{
-                return redirect("/")->with('fail', 'Incorrect password');
+                return redirect("/login")->with('fail', 'Incorrect password');
             }
         }else{
-            return redirect("/")->with('fail', 'No account is registered to the email');
+            $user = DoctorAccount::where("email", "=", $request->email)->first();
+            if ($user){
+                if (Hash::check($request -> pw, $user -> pass)){
+                    $request->session()->put('id', $user -> doctor_id);
+                    $request->session()->put('email', $user -> email);
+                    $request->session()->put('first_name', $user -> first_name);
+                    $request->session()->put('last_name', $user -> last_name);
+    
+                    return redirect('/dashboard');
+                }else{
+                    return redirect("/login")->with('fail', 'Incorrect password');
+                }
+            } else {
+                return redirect("/login")->with('fail', 'Account does not exist');
+            }
         }
     }
 
