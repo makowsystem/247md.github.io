@@ -14,7 +14,7 @@ use Session;
 class AdminController extends Controller
 {
     public function showLogin() {
-        return view('admin/login');
+        return view('login');
     }
 
     public function adminLogin(Request $request) {
@@ -33,10 +33,10 @@ class AdminController extends Controller
                     return redirect("/")->with('fail', 'Not an admin account!');
                 }
             }else{
-                return redirect("/admin/login")->with('fail', 'Incorrect password!');
+                return redirect("/login")->with('fail', 'Incorrect password!');
             }
         }else{
-            return redirect("/admin/login")->with('fail', 'No account is registered to the email!');
+            return redirect("/login")->with('fail', 'No account is registered to the email!');
         }
 
     }
@@ -48,7 +48,7 @@ class AdminController extends Controller
             Session::pull('role');
             Session::pull('first_name');
             Session::pull('last_name');
-            return redirect('/admin');
+            return redirect('/dashboard');
         }
     }
 
